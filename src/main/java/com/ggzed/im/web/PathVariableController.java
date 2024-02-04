@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ggzed.im.demos.web;
+package com.ggzed.im.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

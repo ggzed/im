@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ggzed.im.demos.web;
+package com.ggzed.im.web;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>

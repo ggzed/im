@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ggzed.im.mapper.UserInfoMapper">
+
+    <sql id="allFields">
+        id id,
+        username username,
+        password password,
+        email email,
+        create_time createTime,
+        update_time updateTime,
+        creator creator,
+        updater updater
+    </sql>
+    <!-- 定义一个简单的查询操作 -->
+    <select id="getUserInfoByUsername" resultType="com.ggzed.im.model.dto.UserInfoDto">
+        SELECT
+            u.username,
+            u.password,
+            GROUP_CONCAT(r.name ORDER BY r.name SEPARATOR ', ') AS role_names
+        FROM
+            user_info u
+                INNER JOIN user_role ur ON u.id = ur.user_id
+                INNER JOIN role_info r ON ur.role_id = r.id
+        GROUP BY
+            u.username, u.password;
+        WHERE username = #{username}
+    </select>
+
+</mapper>
