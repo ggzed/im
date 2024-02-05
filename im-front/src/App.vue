@@ -1,30 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <el-config-provider namespace="ep">
+    <BaseHeader />
+    <div class="flex main-container">
+      <BaseSide />
+      <div w="full" py="4">
+        <Logos my="4" />
+        <HelloWorld msg="Hello Vue 3 + Element Plus + Vite" />
+      </div>
+    </div>
+  </el-config-provider>
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--ep-text-color-primary);
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.main-container {
+  height: calc(100vh - var(--ep-menu-item-height) - 3px);
 }
 </style>
