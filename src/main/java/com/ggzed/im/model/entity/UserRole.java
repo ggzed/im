@@ -1,7 +1,7 @@
 package com.ggzed.im.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ggzed.im.mode.common.BaseModel;
+import com.ggzed.im.model.common.BaseModel;
 import lombok.Data;
 
 /**

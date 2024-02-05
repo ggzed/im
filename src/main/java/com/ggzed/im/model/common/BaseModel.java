@@ -1,4 +1,4 @@
-package com.ggzed.im.mode.common;
+package com.ggzed.im.model.common;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
