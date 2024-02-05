@@ -17,15 +17,14 @@
     <select id="getUserInfoByUsername" resultType="com.ggzed.im.model.dto.UserInfoDto">
         SELECT
             u.username,
-            u.password,
-            GROUP_CONCAT(r.name ORDER BY r.name SEPARATOR ', ') AS role_names
+            u.PASSWORD,
+            GROUP_CONCAT( r.NAME ORDER BY r.NAME SEPARATOR ', ' ) AS roles
         FROM
             user_info u
                 INNER JOIN user_role ur ON u.id = ur.user_id
                 INNER JOIN role_info r ON ur.role_id = r.id
-        GROUP BY
-            u.username, u.password;
-        WHERE username = #{username}
+        WHERE
+            username = #{username}
     </select>
 
 </mapper>

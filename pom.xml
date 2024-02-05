@@ -16,6 +16,8 @@
         <druid.version>1.2.16</druid.version>
         <mybatisplus.version>3.5.3.1</mybatisplus.version>
         <hutool.version>5.7.16</hutool.version>
+        <knife4j.version>4.0.0</knife4j.version>
+        <hutool-jwt.version>5.8.25</hutool-jwt.version>
     </properties>
     <dependencies>
         <dependency>
@@ -70,6 +72,18 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version> <!-- 请替换为最新的版本号 -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-jwt</artifactId>
+            <version>${hutool-jwt.version}</version>
         </dependency>
 
     </dependencies>

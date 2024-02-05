@@ -1,4 +1,4 @@
-package com.ggzed.im.service;
+package com.ggzed.im.security;
 
 import cn.hutool.core.convert.Convert;
 import com.ggzed.im.model.dto.UserInfoDto;
