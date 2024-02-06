@@ -1,11 +1,16 @@
+import './assets/main.css'
+
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+
 import App from './App.vue'
-// 导入router和store
-import router from './router/index'
-import store from './store/index'
+import router from './router'
 
 const app = createApp(App)
-app.use(router)
-app.use(store)
-app.mount('#app')
 
+app.use(createPinia())
+app.use(router)
+
+ 
+
+app.mount('#app')
