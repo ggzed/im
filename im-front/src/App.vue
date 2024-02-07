@@ -7,21 +7,34 @@ import {RouterLink, RouterView} from 'vue-router'
   <div class="common-layout">
     <el-container>
       <el-header>
-        <RouterLink to="/">主页</RouterLink>
-        <RouterLink to="/login">登录</RouterLink>
-        <RouterLink to="/register">注册</RouterLink>
+        <el-row :gutter="20">
+          <el-col :span="4">
+            <RouterLink to="/">主页</RouterLink>
+          </el-col>
+          <el-col :span="16">
+            <div class="grid-content ep-bg-purple"/>
+          </el-col>
+          <el-col :span="2">
+            <RouterLink to="/login">登录</RouterLink>
+          </el-col>
+          <el-col :span="2">
+            <RouterLink to="/register">注册</RouterLink>
+          </el-col>
+        </el-row>
       </el-header>
       <el-container>
         <el-aside width="200px">
           <el-menu>
             <el-menu-item-group>
-              <RouterLink to="/ums/role">
+              <RouterLink to="/role">
                 <el-menu-item index="1-1">角色列表</el-menu-item>
               </RouterLink>
-              <RouterLink to="/ums/role/6">
+              <RouterLink to="/roleDetail">
                 <el-menu-item index="1-1">角色详情</el-menu-item>
               </RouterLink>
-              <RouterLink to="/ums/user"><el-menu-item index="1-1">用户列表</el-menu-item></RouterLink>
+              <RouterLink to="/user">
+                <el-menu-item index="1-1">用户列表</el-menu-item>
+              </RouterLink>
             </el-menu-item-group>
           </el-menu>
 
