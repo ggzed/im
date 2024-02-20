@@ -16,12 +16,5 @@ import lombok.Data;
 @Data
 @TableName("user_role")
 public class UserRole extends BaseModel {
-    /**
-     * 用户id
-     */
-    private String userId;
-    /**
-     * 权限id
-     */
-    private String roleId;
+
 }

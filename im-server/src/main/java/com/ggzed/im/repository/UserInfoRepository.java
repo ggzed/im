@@ -3,7 +3,7 @@ package com.ggzed.im.repository;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ggzed.im.mapper.UserInfoMapper;
 import com.ggzed.im.model.dto.UserInfoDto;
-import com.ggzed.im.model.entity.UserInfo;
+import com.ggzed.im.model.entity.UserInfo1;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  */
 @Repository
-public class UserInfoRepository extends ServiceImpl<UserInfoMapper, UserInfo> {
+public class UserInfoRepository extends ServiceImpl<UserInfoMapper, UserInfo1> {
     public UserInfoDto getUserInfoByUsername(String username) {
         return baseMapper.getUserInfoByUsername(username);
     }

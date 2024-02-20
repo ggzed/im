@@ -1,9 +1,6 @@
 package com.ggzed.im.security;
 
-import cn.hutool.core.convert.Convert;
 import com.ggzed.im.model.dto.UserInfoDto;
-import com.ggzed.im.model.entity.UserInfo;
-import com.ggzed.im.model.entity.UserRole;
 import com.ggzed.im.repository.UserInfoRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

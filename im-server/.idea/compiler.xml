@@ -10,8 +10,5 @@
         <module name="im-server" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="im-server" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

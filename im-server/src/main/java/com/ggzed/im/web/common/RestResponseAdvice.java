@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import javax.validation.constraints.NotNull;
@@ -28,7 +29,7 @@ import javax.validation.constraints.NotNull;
  * @date 2022/07/15
  */
 @Slf4j
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = {"com.ggzed.im.web"}, annotations = {RestController.class})
 public class RestResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
@@ -62,8 +63,6 @@ public class RestResponseAdvice implements ResponseBodyAdvice<Object> {
             return body;
         } else if (body instanceof String) {
             return JSON.toJSONString(result);
-        } else if (body instanceof ) {
-            
         }
         return result;
     }

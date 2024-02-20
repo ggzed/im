@@ -2,7 +2,7 @@ package com.ggzed.im.repository;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ggzed.im.mapper.UserInfoMapper;
-import com.ggzed.im.model.entity.UserInfo;
+import com.ggzed.im.model.entity.UserInfo1;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  */
 @Repository
-public class UserRoleRepository extends ServiceImpl<UserInfoMapper, UserInfo> {
-    public UserInfo getUserInfoByUsername(String username) {
+public class UserRoleRepository extends ServiceImpl<UserInfoMapper, UserInfo1> {
+    public UserInfo1 getUserInfoByUsername(String username) {
         return lambdaQuery()
-                .eq(UserInfo::getUsername, username)
+                .eq(UserInfo1::getUsername, username)
                 .one();
     }
 }

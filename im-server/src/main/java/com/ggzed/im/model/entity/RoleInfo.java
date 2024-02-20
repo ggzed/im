@@ -16,8 +16,5 @@ import lombok.Data;
 @Data
 @TableName("role_info")
 public class RoleInfo extends BaseModel {
-    /**
-     * 名称
-     */
-    private String name;
+
 }

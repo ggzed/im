@@ -2,11 +2,9 @@ package com.ggzed.im.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ggzed.im.model.dto.UserInfoDto;
-import com.ggzed.im.model.entity.UserInfo;
+import com.ggzed.im.model.entity.UserInfo1;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * 用户信息DAO.
@@ -18,7 +16,7 @@ import java.util.List;
  */
 
 @Mapper
-public interface UserInfoMapper extends BaseMapper<UserInfo> {
+public interface UserInfoMapper extends BaseMapper<UserInfo1> {
 
     /**
      * 通过username获取用户信息
