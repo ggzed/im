@@ -1,5 +1,7 @@
 server:
   port: 10100   #  配置启动端口号
+  servlet:
+    context-path: /im
 
 mybatis:
   config-location: classpath:mybatis.cfg.xml    #  mybatis主配置文件所在路径

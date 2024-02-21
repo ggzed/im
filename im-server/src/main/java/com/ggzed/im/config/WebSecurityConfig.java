@@ -68,10 +68,12 @@ public class WebSecurityConfig{
                 .authorizeRequests()
                 //允许对于网站静态资源的无授权访问
                 .antMatchers(HttpMethod.GET,
-                        "/",
+//                        "/",
                         "/*.html"
                 ).permitAll()
-                .antMatchers("/doc.html","/webjars/**","/img.icons/**","/swagger-resources/**","/**","/v2/api-docs").permitAll()
+                .antMatchers("/doc.html","/webjars/**","/img.icons/**","/swagger-resources/**",
+//                        "/**",
+                        "/v2/api-docs").permitAll()
                 //对登录注册允许匿名访问
                 .antMatchers("/auth/login", "/auth/register").permitAll()
                 //跨域请求会先进行一次options请求

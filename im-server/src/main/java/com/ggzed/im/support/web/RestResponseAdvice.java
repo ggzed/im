@@ -1,4 +1,4 @@
-package com.ggzed.im.web.common;
+package com.ggzed.im.support.web;
 
 /**
  * 详细介绍类情况.
@@ -73,7 +73,6 @@ public class RestResponseAdvice implements ResponseBodyAdvice<Object> {
     }
 
     /**
-     *
      * 通用异常处理
      */
     @ExceptionHandler(Exception.class)
@@ -82,10 +81,12 @@ public class RestResponseAdvice implements ResponseBodyAdvice<Object> {
         return Result.error(ResultEnum.FAIL);
     }
 
-    // 账号不存在异常
+    /**
+     * 业务异常
+     */
     @ExceptionHandler(BaseException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result<String> handleAccountNotFoundException(BaseException ex) {
+    public Result<String> handleSystemException(BaseException ex) {
         return Result.error(ex.getResultEnum());
     }
 }
