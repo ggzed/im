@@ -1,7 +1,8 @@
 package com.ggzed.im.security;
 
 import com.ggzed.im.model.dto.UserInfoDto;
-import com.ggzed.im.repository.UserInfoRepository;
+import com.ggzed.im.model.entity.AuthInfo;
+import com.ggzed.im.repository.AuthInfoRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -27,7 +28,7 @@ import java.util.List;
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
     @Resource
-    private UserInfoRepository userInfoRepository;
+    private AuthInfoRepository authInfoRepository;
     @Resource
     private PasswordEncoder passwordEncoder;
     @Override
@@ -37,15 +38,14 @@ public class CustomUserDetailsService implements UserDetailsService {
          * 2/通过User（UserDetails）返回details。
          */
         //通过userName获取用户信息
-        UserInfoDto userInfoDto = userInfoRepository.getUserInfoByUsername(userName);
-        if(userInfoDto == null) {
+        AuthInfo authInfo = authInfoRepository.getByUsername(userName);
+        if(authInfo == null) {
             throw new UsernameNotFoundException("not found");
         }
         //定义权限列表.
         List<GrantedAuthority> authorities = new ArrayList<>();
         // 用户可以访问的资源名称（或者说用户所拥有的权限） 注意：必须"ROLE_"开头
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+ userInfoDto.getRoles()));
-        User userDetails = new User(userInfoDto.getUsername(),passwordEncoder.encode(userInfoDto.getPassword()),authorities);
-        return userDetails;
+        authorities.add(new SimpleGrantedAuthority("ROLE_"));
+        return new User(authInfo.getUsername(),passwordEncoder.encode(authInfo.getPassword()),authorities);
     }
 }

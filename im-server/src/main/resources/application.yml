@@ -14,7 +14,7 @@ spring: #springboot的配置
     #useSSL也是某些高版本mysql需要问有没有用SSL连接
     url: jdbc:mysql://127.0.0.1:3306/lsj?serverTimezone=GMT%2B8&useSSL=FALSE
     username: root  #数据库用户名，root为管理员
-    password: root #该数据库用户的密码
+    password: 123456 #该数据库用户的密码
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
 

@@ -1,6 +1,6 @@
 package com.ggzed.im.model.dto;
 
-import com.ggzed.im.model.entity.UserInfo1;
+import com.ggzed.im.model.entity.UserInfo;
 import lombok.Data;
 
 import java.util.List;
@@ -14,6 +14,6 @@ import java.util.List;
  * @Version 1.0
  */
 @Data
-public class UserInfoDto extends UserInfo1 {
+public class UserInfoDto extends UserInfo {
     private List<String> roles;
 }

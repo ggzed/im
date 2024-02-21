@@ -1,6 +1,8 @@
 package com.ggzed.im.web;
 
+import com.ggzed.im.common.result.Result;
 import com.ggzed.im.model.vo.UserVo;
+import com.ggzed.im.service.UserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +22,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    AuthenticationManager authenticationManager;
+    private UserInfoService userInfoService;
 
     @ApiOperation("根据id获取")
     @PostMapping("/{id}")
     public UserVo login(@PathVariable Long id) throws Exception {
-        if (id == 1){
-            throw new Exception("sss");
-        }
-
-        return UserVo.builder().build();
+        return userInfoService.getById(id);
     }
-
-
 }

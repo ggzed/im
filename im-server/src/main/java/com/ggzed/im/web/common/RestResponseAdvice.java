@@ -10,13 +10,18 @@ package com.ggzed.im.web.common;
  */
 
 import com.alibaba.fastjson2.JSON;
-import com.ggzed.im.common.result.ResultJson;
+import com.ggzed.im.common.exception.BaseException;
+import com.ggzed.im.common.result.ResultEnum;
+import com.ggzed.im.common.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
@@ -53,17 +58,34 @@ public class RestResponseAdvice implements ResponseBodyAdvice<Object> {
         // 指定返回的结果为application/json格式
         // 不指定，String类型转json后返回Content-Type是text/plain;charset=UTF-8
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
-        ResultJson result = new ResultJson(body);
+        Result result = Result.success(body);
         // 若返回类型是Result，则不进行修改
         if (body == null) {
             if (returnType.getParameterType().isAssignableFrom(String.class)) {
                 return JSON.toJSONString(result);
             }
-        } else if (body instanceof ResultJson) {
+        } else if (body instanceof Result) {
             return body;
         } else if (body instanceof String) {
             return JSON.toJSONString(result);
         }
         return result;
+    }
+
+    /**
+     *
+     * 通用异常处理
+     */
+    @ExceptionHandler(Exception.class)
+    public Result<String> exceptionHandler(Exception ex) {
+        log.error(ex.getMessage());
+        return Result.error(ResultEnum.FAIL);
+    }
+
+    // 账号不存在异常
+    @ExceptionHandler(BaseException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Result<String> handleAccountNotFoundException(BaseException ex) {
+        return Result.error(ex.getResultEnum());
     }
 }
