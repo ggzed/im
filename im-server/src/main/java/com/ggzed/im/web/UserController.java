@@ -1,6 +1,7 @@
 package com.ggzed.im.web;
 
 import com.ggzed.im.common.result.Result;
+import com.ggzed.im.model.common.PageResult;
 import com.ggzed.im.model.vo.UserVo;
 import com.ggzed.im.service.UserInfoService;
 import io.swagger.annotations.Api;
@@ -28,5 +29,11 @@ public class UserController {
     @PostMapping("/{id}")
     public UserVo login(@PathVariable Long id) throws Exception {
         return userInfoService.getById(id);
+    }
+
+    @ApiOperation("分页查询")
+    @PostMapping("/{id}")
+    public PageResult<UserVo> page(@PathVariable Long id) throws Exception {
+        return userInfoService.page(id);
     }
 }

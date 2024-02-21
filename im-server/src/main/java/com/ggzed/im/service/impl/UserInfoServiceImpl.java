@@ -5,6 +5,7 @@ import cn.hutool.jwt.JWT;
 import com.ggzed.im.common.constants.JwtConstant;
 import com.ggzed.im.common.exception.UserNotExistException;
 import com.ggzed.im.common.result.ResultEnum;
+import com.ggzed.im.model.common.PageResult;
 import com.ggzed.im.model.entity.UserInfo;
 import com.ggzed.im.model.req.LoginReq;
 import com.ggzed.im.model.vo.UserVo;
@@ -33,5 +34,10 @@ public class UserInfoServiceImpl implements UserInfoService {
             throw new UserNotExistException(ResultEnum.USER_NOT_EXIST);
         }
         return Convert.convert(UserVo.class, userInfo);
+    }
+
+    @Override
+    public PageResult<UserVo> page(Long id) {
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.ggzed.im;
+package com.ggzed.im.support.genera;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
