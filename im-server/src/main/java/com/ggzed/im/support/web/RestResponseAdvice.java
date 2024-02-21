@@ -10,7 +10,7 @@ package com.ggzed.im.support.web;
  */
 
 import com.alibaba.fastjson2.JSON;
-import com.ggzed.im.common.exception.BaseException;
+import com.ggzed.im.common.exception.BizException;
 import com.ggzed.im.common.result.ResultEnum;
 import com.ggzed.im.common.result.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -84,9 +84,9 @@ public class RestResponseAdvice implements ResponseBodyAdvice<Object> {
     /**
      * 业务异常
      */
-    @ExceptionHandler(BaseException.class)
+    @ExceptionHandler(BizException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result<String> handleSystemException(BaseException ex) {
+    public Result<String> handleSystemException(BizException ex) {
         return Result.error(ex.getResultEnum());
     }
 }

@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 详细介绍类情况.
@@ -35,13 +36,13 @@ public class BaseModel implements Serializable {
      * 模型的创建时间，插入时自动填充。
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 模型的更新时间，插入和更新时自动填充。
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     /**
      * 模型的创建人，插入时自动填充。

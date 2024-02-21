@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.ggzed.im.model.common.BaseModel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -22,13 +23,14 @@ import lombok.experimental.Accessors;
  */
 @Getter
 @Setter
+@Builder
 @Accessors(chain = true)
 @TableName("auth_info")
 public class AuthInfo extends BaseModel {
     /**
      * 用户id
      */
-    private Long userId;
+    private String userId;
 
     /**
      * 用户名

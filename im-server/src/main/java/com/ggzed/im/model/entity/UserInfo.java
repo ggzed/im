@@ -31,7 +31,7 @@ public class UserInfo  extends BaseModel {
     /**
      * 用户id
      */
-    private Long userId;
+    private String userId;
 
     /**
      * 真实姓名

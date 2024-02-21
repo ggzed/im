@@ -1,6 +1,7 @@
 package com.ggzed.im.web;
 
 import com.ggzed.im.model.req.LoginReq;
+import com.ggzed.im.model.req.RegisterReq;
 import com.ggzed.im.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +22,13 @@ public class AuthController {
 
     @ApiOperation("登录")
     @PostMapping("/login")
-    public String login(@RequestBody LoginReq req){
+    public String login(@RequestBody LoginReq req) {
         return authService.login(req);
+    }
+
+    @ApiOperation("注册")
+    @PostMapping("/register")
+    public void register(@RequestBody RegisterReq req) {
+        authService.register(req);
     }
 }

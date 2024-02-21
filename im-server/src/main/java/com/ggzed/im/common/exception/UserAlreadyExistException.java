@@ -4,11 +4,11 @@ import com.ggzed.im.common.result.ResultEnum;
 
 /**
  * @author: ggzed
- * @date: 2024/2/21 15:45
+ * @date: 2024/2/21 17:48
  * @description:
  */
-public class UserNotExistException extends BizException {
-    public UserNotExistException(ResultEnum resultEnum) {
+public class UserAlreadyExistException extends BizException {
+    public UserAlreadyExistException(ResultEnum resultEnum) {
         super(resultEnum);
     }
 }
