@@ -1,7 +1,7 @@
 package com.ggzed.im.security;
 
 import cn.hutool.jwt.JWTUtil;
-import com.ggzed.im.common.constants.JwtConstant;
+import com.ggzed.im.common.constant.JwtConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

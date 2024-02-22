@@ -33,6 +33,12 @@ public class BaseModel implements Serializable {
     private Long id;
 
     /**
+     * 是否删除
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Byte isDeleted;
+
+    /**
      * 模型的创建时间，插入时自动填充。
      */
     @TableField(fill = FieldFill.INSERT)

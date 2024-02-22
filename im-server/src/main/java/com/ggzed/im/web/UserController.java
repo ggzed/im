@@ -2,6 +2,9 @@ package com.ggzed.im.web;
 
 import com.ggzed.im.common.result.Result;
 import com.ggzed.im.model.common.PageResult;
+import com.ggzed.im.model.req.page.PageReq;
+import com.ggzed.im.model.req.query.UserQuery;
+import com.ggzed.im.model.req.user.UserEditReq;
 import com.ggzed.im.model.vo.UserVo;
 import com.ggzed.im.service.UserInfoService;
 import io.swagger.annotations.Api;
@@ -27,13 +30,25 @@ public class UserController {
 
     @ApiOperation("根据id获取")
     @PostMapping("/{id}")
-    public UserVo login(@PathVariable Long id) throws Exception {
+    public UserVo login(@PathVariable String id) {
         return userInfoService.getById(id);
     }
 
     @ApiOperation("分页查询")
-    @PostMapping("/{id}")
-    public PageResult<UserVo> page(@PathVariable Long id) throws Exception {
-        return userInfoService.page(id);
+    @PostMapping("/page")
+    public PageResult<UserVo> page(@RequestBody UserQuery query, PageReq req) {
+        return userInfoService.page(query, req);
+    }
+
+    @ApiOperation("编辑")
+    @PostMapping("/edit")
+    public void edit(@RequestBody UserEditReq req) {
+        userInfoService.edit(req);
+    }
+
+    @ApiOperation("删除")
+    @PostMapping("/delete/{userId}")
+    public void delete(@RequestParam String userId) {
+        userInfoService.delete(userId);
     }
 }

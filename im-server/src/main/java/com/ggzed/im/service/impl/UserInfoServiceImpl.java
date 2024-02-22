@@ -1,24 +1,19 @@
 package com.ggzed.im.service.impl;
 
 import cn.hutool.core.convert.Convert;
-import cn.hutool.jwt.JWT;
-import com.ggzed.im.common.constants.JwtConstant;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ggzed.im.common.exception.UserNotExistException;
 import com.ggzed.im.common.result.ResultEnum;
-import com.ggzed.im.model.common.PageResult;
 import com.ggzed.im.model.entity.UserInfo;
-import com.ggzed.im.model.req.LoginReq;
+import com.ggzed.im.model.req.page.PageReq;
+import com.ggzed.im.model.req.query.UserQuery;
+import com.ggzed.im.model.req.user.UserEditReq;
 import com.ggzed.im.model.vo.UserVo;
 import com.ggzed.im.repository.UserInfoRepository;
-import com.ggzed.im.service.AuthService;
 import com.ggzed.im.service.UserInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
-
+import com.ggzed.im.model.common.PageResult;
 import javax.annotation.Resource;
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 @Service
@@ -28,8 +23,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoRepository userInfoRepository;
 
     @Override
-    public UserVo getById(Long id) {
-        UserInfo userInfo = userInfoRepository.getById(id);
+    public UserVo getById(String id) {
+        UserInfo userInfo = userInfoRepository.getByUserId(id);
         if (Objects.isNull(userInfo)){
             throw new UserNotExistException(ResultEnum.USER_NOT_EXIST);
         }
@@ -37,7 +32,18 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public PageResult<UserVo> page(Long id) {
-        return null;
+    public PageResult<UserVo> page(UserQuery query, PageReq pageReq) {
+        IPage<UserInfo> iPage = userInfoRepository.pageSearch(query,pageReq.toPage());
+        return PageResult.create(iPage.convert(method-> Convert.convert(UserVo.class,method)));
+    }
+
+    @Override
+    public void edit(UserEditReq req) {
+        userInfoRepository.edit(req);
+    }
+
+    @Override
+    public void delete(String userId) {
+        userInfoRepository.deleteByUserId(userId);
     }
 }

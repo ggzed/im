@@ -1,7 +1,7 @@
 package com.ggzed.im.web;
 
-import com.ggzed.im.model.req.LoginReq;
-import com.ggzed.im.model.req.RegisterReq;
+import com.ggzed.im.model.req.auth.LoginReq;
+import com.ggzed.im.model.req.auth.RegisterReq;
 import com.ggzed.im.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

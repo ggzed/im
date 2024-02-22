@@ -1,7 +1,7 @@
 package com.ggzed.im.service;
 
-import com.ggzed.im.model.req.LoginReq;
-import com.ggzed.im.model.req.RegisterReq;
+import com.ggzed.im.model.req.auth.LoginReq;
+import com.ggzed.im.model.req.auth.RegisterReq;
 
 public interface AuthService {
 

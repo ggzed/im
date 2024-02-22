@@ -1,6 +1,5 @@
 package com.ggzed.im.security;
 
-import com.ggzed.im.model.dto.UserInfoDto;
 import com.ggzed.im.model.entity.AuthInfo;
 import com.ggzed.im.repository.AuthInfoRepository;
 import org.springframework.security.core.GrantedAuthority;

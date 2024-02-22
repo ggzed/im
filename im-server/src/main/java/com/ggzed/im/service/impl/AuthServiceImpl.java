@@ -1,14 +1,13 @@
 package com.ggzed.im.service.impl;
 
-import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.jwt.JWT;
-import com.ggzed.im.common.constants.JwtConstant;
+import com.ggzed.im.common.constant.JwtConstant;
 import com.ggzed.im.common.exception.BizException;
 import com.ggzed.im.common.result.ResultEnum;
 import com.ggzed.im.model.entity.AuthInfo;
-import com.ggzed.im.model.req.LoginReq;
-import com.ggzed.im.model.req.RegisterReq;
+import com.ggzed.im.model.req.auth.LoginReq;
+import com.ggzed.im.model.req.auth.RegisterReq;
 import com.ggzed.im.repository.AuthInfoRepository;
 import com.ggzed.im.service.AuthService;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
         if (Objects.nonNull(exist)) {
             throw new BizException(ResultEnum.USER_HAS_EXISTED);
         }
-       String userId =  IdUtil.simpleUUID();
+        String userId = IdUtil.simpleUUID();
         AuthInfo authInfo = AuthInfo.builder()
                 .userId(userId)
                 .username(req.getUsername())

@@ -9,8 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.ggzed.im.model.common.BaseModel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -21,8 +20,9 @@ import lombok.experimental.Accessors;
  * @author ggzed
  * @since 2024-02-20
  */
-@Getter
-@Setter
+
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("user_info")
 public class UserInfo  extends BaseModel {
@@ -36,7 +36,7 @@ public class UserInfo  extends BaseModel {
     /**
      * 真实姓名
      */
-    private String username;
+    private String name;
 
     /**
      * 用户邮箱

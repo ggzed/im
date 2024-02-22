@@ -1,8 +1,7 @@
 package com.ggzed.im.model.vo;
 
-import com.ggzed.im.model.dto.UserInfoDto;
-import lombok.Builder;
-import lombok.Data;
+import com.ggzed.im.model.entity.UserInfo;
+import lombok.*;
 
 /**
  * 详细介绍类情况.
@@ -14,5 +13,6 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class UserVo extends UserInfoDto {
+@EqualsAndHashCode(callSuper = true)
+public class UserVo extends UserInfo {
 }
