@@ -1,14 +1,18 @@
 package com.ggzed.im.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.jwt.JWT;
 import com.ggzed.im.common.constant.JwtConstant;
 import com.ggzed.im.common.exception.BizException;
 import com.ggzed.im.common.result.ResultEnum;
 import com.ggzed.im.model.entity.AuthInfo;
+import com.ggzed.im.model.entity.Menus;
 import com.ggzed.im.model.req.auth.LoginReq;
 import com.ggzed.im.model.req.auth.RegisterReq;
+import com.ggzed.im.model.vo.MenuVo;
 import com.ggzed.im.repository.AuthInfoRepository;
+import com.ggzed.im.repository.MenuRepository;
 import com.ggzed.im.service.AuthService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +20,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -25,6 +32,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Resource
     private AuthInfoRepository authInfoRepository;
+    @Resource
+    private MenuRepository menuRepository;
 
     @Override
     public String login(LoginReq req) {
@@ -50,5 +59,34 @@ public class AuthServiceImpl implements AuthService {
                 .username(req.getUsername())
                 .password(req.getPassword()).build();
         authInfoRepository.save(authInfo);
+    }
+
+    @Override
+    public List<MenuVo> menus() {
+        List<Menus> menus = menuRepository.list();
+
+        return menus.stream().filter(m->m.getParentId()==0).map(m -> {
+            MenuVo menuVo = Convert.convert(MenuVo.class, m);
+                menuVo.setChildren(getChildrenMenus(menus, m.getId()));
+            return menuVo;
+        }).collect(Collectors.toList());
+    }
+
+    /**
+     * 递归查询子菜单
+     *
+     * @param menus    菜单
+     * @param parentId 父id
+     * @return 子菜单
+     */
+    private List<MenuVo> getChildrenMenus(List<Menus> menus, Long parentId) {
+        List<MenuVo> result = new ArrayList<>();
+        for (Menus menu : menus) {
+            if (Objects.equals(parentId, menu.getParentId())) {
+                result.add(Convert.convert(MenuVo.class, menu));
+                result.addAll(getChildrenMenus(menus, menu.getId()));
+            }
+        }
+        return result;
     }
 }

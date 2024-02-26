@@ -2,11 +2,14 @@ package com.ggzed.im.web;
 
 import com.ggzed.im.model.req.auth.LoginReq;
 import com.ggzed.im.model.req.auth.RegisterReq;
+import com.ggzed.im.model.vo.MenuVo;
 import com.ggzed.im.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
@@ -30,5 +33,11 @@ public class AuthController {
     @PostMapping("/register")
     public void register(@RequestBody RegisterReq req) {
         authService.register(req);
+    }
+
+    @ApiOperation("获取菜单权限")
+    @GetMapping("/menus")
+    public List<MenuVo> menus() {
+      return   authService.menus();
     }
 }

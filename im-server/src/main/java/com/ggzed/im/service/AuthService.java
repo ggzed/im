@@ -2,6 +2,9 @@ package com.ggzed.im.service;
 
 import com.ggzed.im.model.req.auth.LoginReq;
 import com.ggzed.im.model.req.auth.RegisterReq;
+import com.ggzed.im.model.vo.MenuVo;
+
+import java.util.List;
 
 public interface AuthService {
 
@@ -11,4 +14,6 @@ public interface AuthService {
     String login(LoginReq loginReq);
 
     void register(RegisterReq req);
+
+    List<MenuVo> menus();
 }

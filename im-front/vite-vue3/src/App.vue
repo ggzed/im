@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import useUserStore from "@/store/modules/user";
 
-const userStore = useUserStore();
+import Home from "@/views/Home.vue";
 </script>
 
 <template>
-  <div>{{ userStore.name }}</div>
-  <RouterView />
+  <RouterView></RouterView>
 </template>
 
 <style scoped>
-#app {
-  width: 100vw;
-  height: 100vh;
-}
 </style>

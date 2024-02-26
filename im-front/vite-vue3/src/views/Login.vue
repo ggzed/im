@@ -1,0 +1,36 @@
+<template>
+  <el-form :model="loginReq" label-width="120px">
+    <el-form-item label="username">
+      <el-input v-model="loginReq.username"/>
+    </el-form-item>
+    <el-form-item label="password">
+      <el-input v-model="loginReq.password"/>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onSubmit">Create</el-button>
+      <el-button>Cancel</el-button>
+    </el-form-item>
+  </el-form>
+</template>
+
+<script lang="ts" setup>
+import {reactive} from 'vue'
+import {login} from "@/script/api/auth";
+import router from "@/router/ index.ts";
+
+// do not use same name with ref
+const loginReq: LoginReq = reactive({
+  username: '',
+  password: ''
+})
+
+
+const onSubmit = () => {
+  login(loginReq).then(res => {
+    localStorage.setItem("token",res.data)
+  })
+  router.push('/')
+}
+
+
+</script>

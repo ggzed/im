@@ -1,10 +1,9 @@
-import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
+import {RouteRecordRaw, createRouter, createWebHistory} from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
-    { path: "/", redirect: "/home" },
-
-    { path: "/home", name: "Home", component: () => import("@/views/Home.vue") },
-    { path: "/demo", name: "Demo", component: () => import("@/views/Demo.vue") },
+    {path: "/", redirect: "/home"},
+    {path: "/home", name: "Home", component: () => import("@/views/Home.vue")},
+    {path: "/login", name: "Login", component: () => import("@/views/Login.vue")},
 ];
 
 const router = createRouter({
@@ -12,5 +11,22 @@ const router = createRouter({
     history: createWebHistory(),
     routes, // `routes: routes` 的缩写
 });
+
+router.beforeEach(async (to, from, next) => {
+    const token = localStorage.getItem("token");
+    //不需要登录的直接放行
+    if (to.meta.requiresAuth === false) {
+        next()
+        //如果页面需要登录，且登录失效，进入登录页面
+    } else if (token == null && to.path !== '/login') {
+        next({
+            path: '/login',
+            query: {redirect: to.fullPath}
+        })
+    } else {
+        next()
+    }
+
+})
 
 export default router;
