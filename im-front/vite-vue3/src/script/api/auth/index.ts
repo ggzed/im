@@ -11,6 +11,6 @@ export const login = (data: LoginReq) => {
 export const getMenus = () => {
     return service({
         url: '/auth/menus',
-        method: "get",
+        method: "get"
     })
 }

@@ -13,6 +13,7 @@ import java.util.List;
 public class MenuVo {
     private Integer nodeType;
     private String code;
+    private String path;
     private String name;
     private List<MenuVo> children;
 }

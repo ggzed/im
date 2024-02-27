@@ -20,30 +20,19 @@ export default ({command, mode}) => {
             }),],
         // 服务器配置
         server: {
-            host: '0.0.0.0',
-            port: Number(loadEnv(mode, process.cwd()).VITE_APP_PORT),
-            strictPort: true, // 端口被占用直接退出
-            https: false, // 默认用http方式
-            open: true,// 在开发服务器启动时自动在浏览器中打开应用程序
-            proxy: { // 代理配置
-                // 字符串简写写法
-                // '/foo': '',
-                // 选项写法
-                '/api': {
-                    target: loadEnv(mode, process.cwd()).VITE_APP_BASE_URL,
-                    changeOrigin: true, // 跨域配置
-                    rewrite: (path) => path.replace(/^\/api/, '')
+            open: false,
+            port: 5171,
+            https: false,
+            hotOnly: false,
+            proxy: {
+                "/im": {
+                    target: "http://localhost:10100",
+                    changeOrigin: true, //是否跨域
+                    // rewrite: (path) => path.replace(/^\/mis/, ""), //因为后端接口有mis前缀，所以不需要替换
+                    // ws: true,                       //是否代理 websockets
+                    // secure: true, //是否https接口
                 },
-                // 正则表达式写法
-                // '^/fallback/.*': {
-                //   target: 'http://jsonplaceholder.typicode.com',
-                //   changeOrigin: true,
-                //   rewrite: (path) => path.replace(/^\/fallback/, '')
-                // },
             },
-            hmr: {
-                overlay: true // 屏蔽服务器报错
-            }
         },
         resolve: { // 设置项目文件导入路径
             alias: {

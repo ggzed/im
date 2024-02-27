@@ -17,6 +17,7 @@
 import {reactive} from 'vue'
 import {login} from "@/script/api/auth";
 import router from "@/router/ index.ts";
+import {useStore} from "@/store";
 
 // do not use same name with ref
 const loginReq: LoginReq = reactive({
@@ -24,10 +25,11 @@ const loginReq: LoginReq = reactive({
   password: ''
 })
 
-
+const myStore = useStore();
 const onSubmit = () => {
   login(loginReq).then(res => {
-    localStorage.setItem("token",res.data)
+    localStorage.setItem("token",res.data);
+    myStore.initMenus();
   })
   router.push('/')
 }

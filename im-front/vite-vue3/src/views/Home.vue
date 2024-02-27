@@ -12,12 +12,12 @@
                 @open="handleOpen"
                 @close="handleClose"
             >
-              <Tree :menuList = "menuList"/>
+              <Tree :menuList = "menus"/>
             </el-menu>
         </el-aside>
         <el-container>
           <el-header>Header</el-header>
-          <el-main>Main</el-main>
+          <el-main><RouterView/></el-main>
         </el-container>
       </el-container>
     </div>
@@ -28,6 +28,8 @@
   import {onMounted, ref} from "vue";
   import {getMenus} from "@/script/api/auth";
   import Tree from "@/components/Tree.vue";
+  import {useStore} from "@/store";
+  import { storeToRefs } from 'pinia'
   const handleOpen = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
   }
@@ -35,11 +37,14 @@
     console.log(key, keyPath)
   }
 
+  const myStore = useStore();
+  const {menus} = storeToRefs(useStore());
+
   let menuList = ref();
   onMounted(()=>{
-    getMenus().then(res => {
-      menuList = res.data
-      console.log("menuList",menuList)
-    })
+    myStore.initMenus();
+    // getMenus().then(res => {
+    //   menuList = res.data
+    // })
   })
   </script>

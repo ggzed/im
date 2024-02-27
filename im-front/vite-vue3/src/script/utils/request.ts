@@ -5,10 +5,10 @@ import { ElMessage, ElLoading } from 'element-plus';
 // 创建axios实例
 const service = axios.create({
     // 服务接口请求
-    baseURL: "http://localhost:10100/im",
+    baseURL: import.meta.env.VITE_APP_BASE_API,
     // 超时设置
     timeout: 15000,
-    headers:{'Content-Type':'application/json;charset=utf-8'}
+    headers:{'Content-Type':'application/json;charset=utf-8'},
 })
 
 let loading:any;
@@ -33,11 +33,15 @@ const hideLoading = () => {
     }
 }
 
+function getToken() {
+    return localStorage.getItem("token");
+}
+
 // 请求拦截
 service.interceptors.request.use(config => {
     showLoading()
     // 是否需要设置 token
-    // config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     // get请求映射params参数
     if (config.method === 'get' && config.params) {
         let url = config.url + '?';
