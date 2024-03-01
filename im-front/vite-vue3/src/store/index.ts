@@ -7,9 +7,6 @@ import {getMenus} from "@/script/api/auth";
 export const useStore = defineStore('myFirstStore', {
     state: () => {
         return {
-            count: 0,
-            name: 'foo',
-            list: [1, 2, 3],
             menus:Array
         }
     },

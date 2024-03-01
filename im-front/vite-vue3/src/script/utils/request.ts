@@ -1,106 +1,131 @@
-import axios from 'axios';
-import { errorCodeType } from '@/script/utils/error-code-type';
-import { ElMessage, ElLoading } from 'element-plus';
+import axios, {AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig} from 'axios'
+import {ElMessage} from 'element-plus'
 
-// 创建axios实例
-const service = axios.create({
-    // 服务接口请求
-    baseURL: import.meta.env.VITE_APP_BASE_API,
-    // 超时设置
-    timeout: 15000,
-    headers:{'Content-Type':'application/json;charset=utf-8'},
-})
+// // 创建axios实例
+// const service = axios.create({
+//     // 服务接口请求
+//     baseURL: import.meta.env.VITE_APP_BASE_API,
+//     // 超时设置
+//     timeout: 15000,
+//     headers: {'Content-Type': 'application/json;charset=utf-8'}
+// })
 
-let loading:any;
-//正在请求的数量
-let requestCount:number = 0
-//显示loading
-const showLoading = () => {
-    if (requestCount === 0 && !loading) {
-        loading = ElLoading.service({
-            text: "拼命加载中，请稍后...",
-            background: 'rgba(0, 0, 0, 0.7)',
-            spinner: 'el-icon-loading',
-        })
-    }
-    requestCount++;
-}
-//隐藏loading
-const hideLoading = () => {
-    requestCount--
-    if (requestCount == 0) {
-        loading.close()
-    }
+// 数据返回的接口
+// 定义请求响应参数，不含data
+interface Result {
+    code: number;
+    msg: string
 }
 
-function getToken() {
-    return localStorage.getItem("token");
+// 请求响应参数，包含data
+interface ResultData<T = any> extends Result {
+    data?: T;
+}
+const URL: string = import.meta.env.VITE_APP_BASE_API
+enum RequestEnums {
+    TIMEOUT = 20000,
+    OVERDUE = 600, // 登录失效
+    FAIL = 999, // 请求失败
+    SUCCESS = 1, // 请求成功
+}
+const config = {
+    // 默认地址
+    baseURL: URL as string,
+    // 设置超时时间
+    timeout: RequestEnums.TIMEOUT as number,
+    // 跨域时候允许携带凭证
+    withCredentials: true
 }
 
-// 请求拦截
-service.interceptors.request.use(config => {
-    showLoading()
-    // 是否需要设置 token
-    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
-    // get请求映射params参数
-    if (config.method === 'get' && config.params) {
-        let url = config.url + '?';
-        for (const propName of Object.keys(config.params)) {
-            const value = config.params[propName];
-            var part = encodeURIComponent(propName) + "=";
-            if (value !== null && typeof(value) !== "undefined") {
-                if (typeof value === 'object') {
-                    for (const key of Object.keys(value)) {
-                        let params = propName + '[' + key + ']';
-                        var subPart = encodeURIComponent(params) + "=";
-                        url += subPart + encodeURIComponent(value[key]) + "&";
+class RequestHttp {
+    // 定义成员变量并指定类型
+    service: AxiosInstance;
+    public constructor(config: AxiosRequestConfig) {
+        // 实例化axios
+        this.service = axios.create(config);
+
+        /**
+         * 请求拦截器
+         * 客户端发送请求 -> [请求拦截器] -> 服务器
+         * token校验(JWT) : 接受服务器返回的token,存储到vuex/pinia/本地储存当中
+         */
+        this.service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+                const token = localStorage.getItem('token') || '';
+                return {
+                    ...config,
+                    headers: {
+                        'Authorization': 'Bearer '+token, // 请求头中携带token信息
                     }
-                } else { url += part + encodeURIComponent(value) + "&";
+                }
+            },
+            (error: AxiosError) => {
+                // 请求报错
+                Promise.reject(error)
+            }
+        )
+
+        /**
+         * 响应拦截器
+         * 服务器换返回信息 -> [拦截统一处理] -> 客户端JS获取到信息
+         */
+        this.service.interceptors.response.use(
+            (response: AxiosResponse) => {
+                const {data, config} = response; // 解构
+                if (data.code === RequestEnums.OVERDUE) {
+                    // 登录信息失效，应跳转到登录页面，并清空本地的token
+                    localStorage.setItem('token', '');
+                    // router.replace({
+                    //   path: '/login'
+                    // })
+                    return Promise.reject(data);
+                }
+                // 全局错误信息拦截（防止下载文件得时候返回数据流，没有code，直接报错）
+                if (data.code && data.code !== RequestEnums.SUCCESS) {
+                    ElMessage.error(data); // 此处也可以使用组件提示报错信息
+                    return Promise.reject(data)
+                }
+                return data;
+            },
+            (error: AxiosError) => {
+                const {response} = error;
+                if (response) {
+                    this.handleCode(response.status)
+                }
+                if (!window.navigator.onLine) {
+                    ElMessage.error('网络连接失败');
+                    // 可以跳转到错误页面，也可以不做操作
+                    // return router.replace({
+                    //   path: '/404'
+                    // });
                 }
             }
-        }
-        url = url.slice(0, -1);
-        config.params = {};
-        config.url = url;
+        )
     }
-    return config
-}, error => {
-    console.log(error)
-    Promise.reject(error)
-})
+    handleCode(code: number):void {
+        switch(code) {
+            case 401:
+                ElMessage.error('登录失败，请重新登录');
+                break;
+            default:
+                ElMessage.error('请求失败');
+                break;
+        }
+    }
 
-// 响应拦截器
-service.interceptors.response.use((res:any) => {
-    hideLoading()
-    // 未设置状态码则默认成功状态
-    const code = res.data['code'] || 1;
-    // 获取错误信息
-    const msg = errorCodeType(code) || res.data['msg'] || errorCodeType('default')
-    if(code === 1){
-        return Promise.resolve(res.data)
-    }else{
-        ElMessage.error(msg)
-        return Promise.reject(res.data)
+    // 常用方法封装
+    get<T>(url: string, params?: object): Promise<ResultData<T>> {
+        return this.service.get(url, {params});
     }
-},  error => {
-        console.log('err' + error)
-        hideLoading()
-        let { message } = error;
-        if (message == "Network Error") {
-            message = "后端接口连接异常";
-        }
-        else if (message.includes("timeout")) {
-            message = "系统接口请求超时";
-        }
-        else if (message.includes("Request failed with status code")) {
-            message = "系统接口" + message.substr(message.length - 3) + "异常";
-        }
-        ElMessage.error({
-            message: message,
-            duration: 5 * 1000
-        })
-        return Promise.reject(error)
+    post<T>(url: string, params?: object): Promise<ResultData<T>> {
+        return this.service.post(url, params);
     }
-)
+    put<T>(url: string, params?: object): Promise<ResultData<T>> {
+        return this.service.put(url, params);
+    }
+    delete<T>(url: string, params?: object): Promise<ResultData<T>> {
+        return this.service.delete(url, {params});
+    }
+}
 
-export default service;
+// 导出一个实例对象
+export default new RequestHttp(config);

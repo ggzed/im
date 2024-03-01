@@ -7,7 +7,7 @@
       <el-input v-model="loginReq.password"/>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">Create</el-button>
+      <el-button type="primary" @click="Login">Create</el-button>
       <el-button>Cancel</el-button>
     </el-form-item>
   </el-form>
@@ -26,13 +26,21 @@ const loginReq: LoginReq = reactive({
 })
 
 const myStore = useStore();
-const onSubmit = () => {
-  login(loginReq).then(res => {
-    localStorage.setItem("token",res.data);
-    myStore.initMenus();
-  })
+
+const Login = async () => {
+  const res = await login(loginReq);
+  localStorage.setItem("token",res.data.token);
+  myStore.initMenus();
   router.push('/')
 }
+
+// const Login = () => {
+//   login(loginReq).then(res => {
+//     localStorage.setItem("token",res.data.token);
+//     myStore.initMenus();
+//   })
+//   router.push('/')
+// }
 
 
 </script>

@@ -10,6 +10,7 @@ import com.ggzed.im.model.entity.AuthInfo;
 import com.ggzed.im.model.entity.Menus;
 import com.ggzed.im.model.req.auth.LoginReq;
 import com.ggzed.im.model.req.auth.RegisterReq;
+import com.ggzed.im.model.vo.LoginVo;
 import com.ggzed.im.model.vo.MenuVo;
 import com.ggzed.im.repository.AuthInfoRepository;
 import com.ggzed.im.repository.MenuRepository;
@@ -36,15 +37,17 @@ public class AuthServiceImpl implements AuthService {
     private MenuRepository menuRepository;
 
     @Override
-    public String login(LoginReq req) {
+    public LoginVo login(LoginReq req) {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword());
         authenticationManager.authenticate(authenticationToken);
         //上一步没有抛出异常说明认证成功，我们向用户颁发jwt令牌
-        return JWT.create()
+        return LoginVo
+                .builder()
+                .token(JWT.create()
                 .setPayload("username", req.getUsername())
                 .setKey(JwtConstant.JWT_SIGN_KEY.getBytes(StandardCharsets.UTF_8))
-                .sign();
+                .sign()).build();
     }
 
     @Override
@@ -65,9 +68,9 @@ public class AuthServiceImpl implements AuthService {
     public List<MenuVo> menus() {
         List<Menus> menus = menuRepository.list();
 
-        return menus.stream().filter(m->m.getParentId()==0).map(m -> {
+        return menus.stream().filter(m -> m.getParentId() == 0).map(m -> {
             MenuVo menuVo = Convert.convert(MenuVo.class, m);
-                menuVo.setChildren(getChildrenMenus(menus, m.getId()));
+            menuVo.setChildren(getChildrenMenus(menus, m.getId()));
             return menuVo;
         }).collect(Collectors.toList());
     }

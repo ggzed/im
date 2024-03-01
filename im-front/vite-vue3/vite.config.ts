@@ -9,7 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
-export default ({command, mode}) => {
+export default () => {
     return defineConfig({
         plugins: [vue(),
             AutoImport({
@@ -22,8 +22,6 @@ export default ({command, mode}) => {
         server: {
             open: false,
             port: 5171,
-            https: false,
-            hotOnly: false,
             proxy: {
                 "/im": {
                     target: "http://localhost:10100",

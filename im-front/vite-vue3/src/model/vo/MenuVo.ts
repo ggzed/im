@@ -1,5 +1,5 @@
 declare interface MenuVo {
-    path: string,
+    code: string,
     name: string,
     nodeType:number,
     children:Array<MenuVo>

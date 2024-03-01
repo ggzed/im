@@ -48,7 +48,7 @@ public class UserController {
 
     @ApiOperation("删除")
     @PostMapping("/delete/{userId}")
-    public void delete(@RequestParam String userId) {
+    public void delete(@PathVariable String userId) {
         userInfoService.delete(userId);
     }
 }
