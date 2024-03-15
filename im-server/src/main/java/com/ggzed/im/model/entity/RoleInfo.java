@@ -3,9 +3,7 @@ package com.ggzed.im.model.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ggzed.im.model.common.BaseModel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 import org.apache.ibatis.type.StringTypeHandler;
 
@@ -19,11 +17,10 @@ import java.util.List;
  * @author ggzed
  * @since 2024-02-20
  */
-@Getter
-@Setter
-@Builder
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName(value = "role_info",autoResultMap = true)
+@TableName("role_info")
 public class RoleInfo extends BaseModel {
     /**
      * 角色id

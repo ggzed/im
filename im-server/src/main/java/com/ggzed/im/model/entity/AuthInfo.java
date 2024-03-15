@@ -8,9 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.ggzed.im.model.common.BaseModel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -21,10 +19,10 @@ import lombok.experimental.Accessors;
  * @author ggzed
  * @since 2024-02-20
  */
-@Getter
-@Setter
-@Builder
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
+@Builder
 @TableName("auth_info")
 public class AuthInfo extends BaseModel {
     /**

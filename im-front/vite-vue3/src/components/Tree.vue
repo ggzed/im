@@ -27,7 +27,6 @@
 const props = defineProps({
   menuList: Array<MenuVo>
 })
-console.log("menuList", props.menuList)
 
 </script>
 

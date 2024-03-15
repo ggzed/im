@@ -1,4 +1,4 @@
-import axios from "@/script/utils/request.ts";
+import service from "@/script/utils/request.ts";
 
 namespace Login {
     // 用户登录表单
@@ -14,9 +14,16 @@ namespace Login {
 // 用户登录
 export const login = (params: Login.LoginReqForm) => {
     // 返回的数据格式可以和服务端约定
-    return axios.post<Login.LoginResData>('/auth/login', params);
+    return service({
+        url:'/auth/login',
+        method:'post',
+        params
+    })
 }
 //获取菜单
 export const getMenus = () => {
-    return axios.get<Array<MenuVo>>('/auth/menus');
+    return service({
+        url:'/auth/menus',
+        method:'get',
+    })
 }

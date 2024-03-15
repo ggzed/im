@@ -48,11 +48,11 @@ const handleCurrentChange = (val: number) => {
 onMounted(() => {
   page(pageReq.query, 1, 10, 1).then(res => {
     console.log("res",res)
-    pageRes.current = res.current;
-    pageRes.total = res.total;
-    pageRes.size = res.size;
-    pageRes.totalPages = res.totalPages;
-    pageRes.records = res.records;
+    pageRes.current = res.data.current;
+    pageRes.total = res.data.total;
+    pageRes.size = res.data.size;
+    pageRes.totalPages = res.data.totalPages;
+    pageRes.records = res.data.records;
   })
 })
 </script>
