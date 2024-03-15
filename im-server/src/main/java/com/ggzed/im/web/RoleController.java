@@ -3,11 +3,8 @@ package com.ggzed.im.web;
 import com.ggzed.im.model.common.PageResult;
 import com.ggzed.im.model.req.page.PageReq;
 import com.ggzed.im.model.req.query.RoleQuery;
-import com.ggzed.im.model.req.query.UserQuery;
 import com.ggzed.im.model.req.user.RoleEditReq;
-import com.ggzed.im.model.req.user.UserEditReq;
 import com.ggzed.im.model.vo.RoleVo;
-import com.ggzed.im.model.vo.UserVo;
 import com.ggzed.im.service.RoleInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,9 +27,9 @@ public class RoleController {
     private RoleInfoService roleInfoService;
 
     @ApiOperation("根据id获取")
-    @PostMapping("/{id}")
-    public RoleVo login(@PathVariable String id) {
-        return roleInfoService.getById(id);
+    @GetMapping("/{id}")
+    public RoleVo getByRoleId(@PathVariable String id) {
+        return roleInfoService.getByRoleId(id);
     }
 
     @ApiOperation("分页查询")

@@ -2,10 +2,21 @@
   <el-table :data="pageRes.records" style="width: 100%">
     <el-table-column prop="name" label="名称" width="180"/>
     <el-table-column prop="code" label="编码" width="180"/>
-    <el-table-column prop="roleId" label="操作">
-      <el-button type="primary" round @click="edit(roleId)">编辑</el-button>
+    <el-table-column label="Operations">
+      <template #default="scope">
+        <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+        >Edit</el-button
+        >
+        <el-button
+            size="small"
+            type="danger"
+            @click="handleDelete(scope.$index, scope.row)"
+        >Delete</el-button
+        >
+      </template>
     </el-table-column>
   </el-table>
+
   <el-pagination
       small
       background
@@ -14,27 +25,37 @@
       class="mt-4"
       @current-change="handleCurrentChange"
   />
-  <RoleEdit :visible = visible :roleId = roleId></RoleEdit>
+  <RoleEdit :visible = visible   @close-drawer="closeDrawer"></RoleEdit>
 </template>
+
 <script lang="ts" setup>
 import {onMounted, reactive, Ref, ref} from "vue";
-import {rolePage} from "@/script/api/role";
+import {getByRoleId, rolePage} from "@/script/api/role";
 import RoleEdit from "@/components/RoleEdit.vue";
 
 const visible = ref(false);
-let roleId = ref()
-function edit(currentId:any) {
-  visible.value= true
-  roleId.value = currentId;
+
+// 关闭弹窗
+function closeDrawer() {
+  visible.value = false;
+}
+const handleEdit = (index: number, row: RoleVo) => {
+  getByRoleId(row.id).then(res => {
+    console.log("res",res)
+  })
+}
+const handleDelete = (index: number, row: RoleVo) => {
+  console.log(index, row)
 }
 
-const pageRes: PageRes<UserVo> = reactive({
+
+const pageRes: PageRes<RoleVo> = reactive({
   total: 0,
   size: 0,
   current: 0,
   totalPages: 0,
   records: [{
-    roleId: '',
+    id: '',
     name: '',
     code: '',
   }]

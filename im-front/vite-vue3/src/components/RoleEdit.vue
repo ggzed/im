@@ -18,21 +18,31 @@
             :props="defaultProps"
         />
       </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">Create</el-button>
+        <el-button @click="closeDrawer">取消</el-button>
+      </el-form-item>
     </el-form>
   </el-dialog>
 </template>
 
 
 <script setup lang="ts">
-import { ref,toRefs} from 'vue'
+import {onMounted, ref, toRefs} from 'vue'
 
 const props = defineProps({
   visible: Boolean,
   roleId: String
 });
 const { visible,roleId } = toRefs(props); //数据解构
+//通知父组件修改值
+const emit = defineEmits(["closeDrawer"]);
+function closeDrawer() {
+  emit("closeDrawer");
+}
 
 import { reactive } from 'vue'
+import {getByRoleId} from "@/script/api/role";
 
 const form = reactive({
   name: '',
@@ -45,6 +55,11 @@ const form = reactive({
   desc: '',
 })
 
+
+const onSubmit = () => {
+  closeDrawer();
+  console.log('submit!')
+}
 const defaultProps = {
   children: 'children',
   label: 'label',

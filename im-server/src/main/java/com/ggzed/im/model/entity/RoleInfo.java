@@ -33,7 +33,7 @@ public class RoleInfo extends BaseModel {
     private String code;
 
     @TableField(typeHandler = StringTypeHandler.class)
-    private List<String> menus;
+    private List<Long> menus;
 
     /**
      * 名称

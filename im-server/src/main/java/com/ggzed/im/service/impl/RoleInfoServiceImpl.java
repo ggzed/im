@@ -27,11 +27,8 @@ public class RoleInfoServiceImpl implements RoleInfoService {
     private RoleInfoRepository roleInfoRepository;
 
     @Override
-    public RoleVo getById(String id) {
+    public RoleVo getByRoleId(String id) {
         RoleInfo roleInfo = roleInfoRepository.getById(id);
-        if (Objects.isNull(roleInfo)) {
-            throw new UserNotExistException(ResultEnum.USER_NOT_EXIST);
-        }
         return Convert.convert(RoleVo.class, roleInfo);
     }
 
