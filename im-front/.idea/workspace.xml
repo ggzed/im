@@ -4,77 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f0c5421-3e41-449c-b980-e0fe91407753" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/vite-vue3/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/public/vite.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/src/assets/vue.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/src/components/HelloWorld.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/src/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/src/vite-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/tsconfig.node.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite-vue3/vite.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/common/constant/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/page/PageReq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/query/UserQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/user/UserEditReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apifox/动态路由.apifox.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auto-imports.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/Home.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/Login.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/NotFound.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/Register.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/Role.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/RoleDetail.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/User.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webstorm.webpack.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/common/constants/JwtConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/common/constant/JwtConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/config/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/config/MyMetaObjectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/mapper/AuthInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/mapper/AuthInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/common/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/common/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/dto/UserInfoDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/entity/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/entity/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/LoginReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/auth/LoginReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/RegisterReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/req/auth/RegisterReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/vo/UserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/model/vo/UserVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/repository/UserInfoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/repository/UserInfoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/security/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/security/JwtAuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/security/JwtAuthenticationTokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/UserInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/impl/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/service/impl/UserInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/web/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/web/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../im-server/src/main/java/com/ggzed/im/web/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/src/main/resources/mapper/UserInfoMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/target/classes/mapper/UserInfoMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../im-server/target/classes/static/index.html" beforeDir="false" />
+    <list default="true" id="b3c43b24-1485-4d73-9f84-4d9cab1d7721" name="Changes" comment="角色">
+      <change afterPath="$PROJECT_DIR$/src/model/vo/RoleVo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RoleEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RoleEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/script/api/role/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/api/role/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Role.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Role.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/model/entity/RoleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/model/entity/RoleInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/model/vo/RoleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/model/vo/RoleVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/service/RoleInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/service/RoleInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/service/impl/RoleInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/service/impl/RoleInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/web/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../im-server/src/main/java/com/ggzed/im/web/RoleController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,78 +23,101 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Vue Options API Component" />
         <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2cbvxWOwdkLxfrwX38lz63cr6lg" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2cis3LFAgrQj3pU1xsZiBWbbG0K" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "im__0.0.1__ggzed",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/15005/IdeaProjects/im/im-front/vite-vue3",
+    "last_opened_file_path": "C:/Users/15005/IdeaProjects/im/im-front/vite-vue3/src/model/vo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "ts.external.directory.path": "C:\\Users\\15005\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "C:\\Users\\15005\\IdeaProjects\\im\\im-front\\vite-vue3\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "vue.recent.templates": [
+      "Vue Options API Component",
       "Vue Composition API Component"
     ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\15005\IdeaProjects\im\im-front\src\page" />
+      <recent name="C:\Users\15005\IdeaProjects\im\im-front\vite-vue3\src\model\vo" />
+      <recent name="C:\Users\15005\IdeaProjects\im\im-front\vite-vue3\src\components" />
+      <recent name="C:\Users\15005\IdeaProjects\im\im-front\vite-vue3\src\script\api\role" />
+      <recent name="C:\Users\15005\IdeaProjects\im\im-front\vite-vue3\src\model\common" />
+      <recent name="C:\Users\15005\IdeaProjects\im\im-front\vite-vue3\src\script\api\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\15005\IdeaProjects\im\im-front\src" />
+      <recent name="C:\Users\15005\IdeaProjects\im\im-front\vite-vue3\src\views" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="6f0c5421-3e41-449c-b980-e0fe91407753" name="更改" comment="" />
+      <changelist id="b3c43b24-1485-4d73-9f84-4d9cab1d7721" name="Changes" comment="" />
       <created>1708330792436</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708330792436</updated>
-      <workItem from="1708393341052" duration="1282000" />
-      <workItem from="1708478558871" duration="449000" />
-      <workItem from="1708480832292" duration="3622000" />
-      <workItem from="1708587030037" duration="235000" />
-      <workItem from="1708587276503" duration="2672000" />
+      <workItem from="1708605534264" duration="4493000" />
+      <workItem from="1708927602576" duration="446000" />
+      <workItem from="1708928055357" duration="25554000" />
+      <workItem from="1709281361401" duration="2278000" />
+      <workItem from="1710223596111" duration="29000" />
+      <workItem from="1710468491744" duration="12707000" />
     </task>
+    <task id="LOCAL-00001" summary="page">
+      <option name="closed" value="true" />
+      <created>1708610522282</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708610522282</updated>
+    </task>
+    <task id="LOCAL-00002" summary="角色">
+      <option name="closed" value="true" />
+      <created>1710491400106</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710491400106</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="page" />
+    <MESSAGE value="角色" />
+    <option name="LAST_COMMIT_MESSAGE" value="角色" />
   </component>
 </project>
