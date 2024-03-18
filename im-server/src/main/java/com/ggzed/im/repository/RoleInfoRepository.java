@@ -1,17 +1,16 @@
 package com.ggzed.im.repository;
 
+import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ggzed.im.common.constant.Constants;
 import com.ggzed.im.mapper.RoleInfoMapper;
-import com.ggzed.im.mapper.UserRoleMapper;
 import com.ggzed.im.model.entity.RoleInfo;
 import com.ggzed.im.model.entity.UserInfo;
-import com.ggzed.im.model.entity.UserRole;
 import com.ggzed.im.model.req.query.RoleQuery;
-import com.ggzed.im.model.req.query.UserQuery;
 import com.ggzed.im.model.req.user.RoleEditReq;
 import org.springframework.stereotype.Repository;
 
@@ -31,12 +30,18 @@ public class RoleInfoRepository extends ServiceImpl<RoleInfoMapper, RoleInfo> {
 
     private LambdaQueryChainWrapper<RoleInfo> buildQueryWrapper(RoleQuery query) {
         return lambdaQuery()
-                .eq(StrUtil.isNotBlank(query.getName()), RoleInfo::getName, query.getName());
+                .eq(StrUtil.isNotBlank(query.getName()), RoleInfo::getName, query.getName())
+                .eq(RoleInfo::getIsDeleted, Constants.NOT_DELETED);
     }
 
     public void edit(RoleEditReq req) {
+        this.saveOrUpdate(Convert.convert(RoleInfo.class, req));
     }
 
-    public void deleteByUserId(String userId) {
+    public void delete(Long id) {
+        lambdaUpdate()
+                .set(RoleInfo::getIsDeleted, Constants.IS_DELETED)
+                .eq(RoleInfo::getId, id)
+                .update();
     }
 }

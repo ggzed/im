@@ -5,13 +5,13 @@
     <el-table-column label="Operations">
       <template #default="scope">
         <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
-        >Edit</el-button
+        >编辑</el-button
         >
         <el-button
             size="small"
             type="danger"
             @click="handleDelete(scope.$index, scope.row)"
-        >Delete</el-button
+        >删除</el-button
         >
       </template>
     </el-table-column>
@@ -25,29 +25,24 @@
       class="mt-4"
       @current-change="handleCurrentChange"
   />
-  <RoleEdit :visible = visible   @close-drawer="closeDrawer"></RoleEdit>
+  <RoleEdit :visible = visible :roleId = roleId @close-drawer="closeDrawer"></RoleEdit>
 </template>
 
 <script lang="ts" setup>
 import {onMounted, reactive, Ref, ref} from "vue";
-import {getByRoleId, rolePage} from "@/script/api/role";
+import {deleteByRoleId, getByRoleId, rolePage} from "@/script/api/role";
 import RoleEdit from "@/components/RoleEdit.vue";
 
 const visible = ref(false);
+const roleId = ref(1);
 
-// 关闭弹窗
-function closeDrawer() {
-  visible.value = false;
-}
 const handleEdit = (index: number, row: RoleVo) => {
-  getByRoleId(row.id).then(res => {
-    console.log("res",res)
-  })
+  visible.value=true;
+  roleId.value=row.id;
 }
 const handleDelete = (index: number, row: RoleVo) => {
-  console.log(index, row)
+  deleteByRoleId(row.id);
 }
-
 
 const pageRes: PageRes<RoleVo> = reactive({
   total: 0,
@@ -76,7 +71,6 @@ const handleCurrentChange = (val: number) => {
 
 onMounted(() => {
   rolePage(pageReq.query, 1, 10, 1).then(res => {
-    console.log("res", res)
     pageRes.current = res.data.current;
     pageRes.total = res.data.total;
     pageRes.size = res.data.size;
@@ -84,4 +78,9 @@ onMounted(() => {
     pageRes.records = res.data.records;
   })
 })
+
+// 关闭弹窗
+function closeDrawer() {
+  visible.value = false;
+}
 </script>

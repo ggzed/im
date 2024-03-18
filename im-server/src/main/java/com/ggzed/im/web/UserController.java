@@ -29,7 +29,7 @@ public class UserController {
     private UserInfoService userInfoService;
 
     @ApiOperation("根据id获取")
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public UserVo login(@PathVariable String id) {
         return userInfoService.getById(id);
     }

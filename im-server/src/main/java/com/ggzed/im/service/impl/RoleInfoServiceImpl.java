@@ -2,23 +2,17 @@ package com.ggzed.im.service.impl;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.ggzed.im.common.exception.UserNotExistException;
-import com.ggzed.im.common.result.ResultEnum;
 import com.ggzed.im.model.common.PageResult;
 import com.ggzed.im.model.entity.RoleInfo;
-import com.ggzed.im.model.entity.UserInfo;
 import com.ggzed.im.model.req.page.PageReq;
 import com.ggzed.im.model.req.query.RoleQuery;
-import com.ggzed.im.model.req.query.UserQuery;
 import com.ggzed.im.model.req.user.RoleEditReq;
-import com.ggzed.im.model.req.user.UserEditReq;
 import com.ggzed.im.model.vo.RoleVo;
 import com.ggzed.im.repository.RoleInfoRepository;
 import com.ggzed.im.service.RoleInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Objects;
 
 @Service
 public class RoleInfoServiceImpl implements RoleInfoService {
@@ -44,7 +38,7 @@ public class RoleInfoServiceImpl implements RoleInfoService {
     }
 
     @Override
-    public void delete(String userId) {
-        roleInfoRepository.deleteByUserId(userId);
+    public void delete(Long id) {
+        roleInfoRepository.delete(id);
     }
 }

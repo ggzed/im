@@ -1,6 +1,6 @@
-declare interface RoleVo {
+declare interface RoleEditReq {
     id: number,
     name: string,
-    code:string,
+    code: string,
     menus:number[]
 }

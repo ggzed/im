@@ -7,7 +7,7 @@
           v-if="item.nodeType == 1"
       >
         <template #title>
-          <span>{{ item.name + item.path }}</span>
+          <span>{{ item.name}}</span>
         </template>
         <!--        有子菜单的继续遍历（递归）-->
         <Tree :menuList="item.children"></Tree>
@@ -25,7 +25,10 @@
 <script setup lang="ts">
 
 const props = defineProps({
-  menuList: Array<MenuVo>
+  menuList:{
+    type:Array,
+    default:[]
+  }
 })
 
 </script>

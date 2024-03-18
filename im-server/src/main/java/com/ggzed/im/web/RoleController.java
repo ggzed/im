@@ -45,8 +45,8 @@ public class RoleController {
     }
 
     @ApiOperation("删除")
-    @PostMapping("/delete/{roleId}")
-    public void delete(@PathVariable String roleId) {
-        roleInfoService.delete(roleId);
+    @PostMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        roleInfoService.delete(id);
     }
 }

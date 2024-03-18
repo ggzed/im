@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author: ggzed
@@ -12,28 +13,16 @@ import java.time.LocalDate;
  */
 @Data
 public class RoleEditReq {
-    @ApiModelProperty(value = "用户id")
-    private String userId;
+    @ApiModelProperty(value = "id")
+    private Long id;
 
-    @ApiModelProperty(value = "姓名")
+    @ApiModelProperty(value = "名称")
     private String name;
 
     @ApiModelProperty(value = "用户邮箱")
-    private String email;
+    private String code;
 
-    @ApiModelProperty(value = "昵称")
-    private String nickname;
-
-    @ApiModelProperty(value = "头像")
-    private Integer avatar;
-
-    @ApiModelProperty(value = "生日")
-    private LocalDate birthday;
-
-    @ApiModelProperty(value = "性别")
-    private Byte sex;
-
-    @ApiModelProperty(value = "介绍")
-    private String shortIntroduce;
+    @ApiModelProperty(value = "权限菜单")
+    private List<Long> menus;
 
 }

@@ -1,23 +1,17 @@
 <template>
-  <el-dialog v-model="visible" title="权限设置" width="70%" center :before-close="handleClose" append-to-body>
-    <el-form :model="roleInfo" label-width="auto" style="max-width: 600px">
+  <el-dialog v-model="visible" title="用户信息" width="70%" center :before-close="handleClose" append-to-body>
+    <el-form :model="userInfo" label-width="auto" style="max-width: 600px">
       <el-form-item label="名称">
-        <el-input v-model="roleInfo.name"/>
+        <el-input v-model="userInfo.name"/>
       </el-form-item>
-      <el-form-item label="说明">
-        <el-input v-model="roleInfo.code"/>
+      <el-form-item label="邮箱">
+        <el-input v-model="userInfo.email"/>
       </el-form-item>
-      <el-form-item label="权限设置">
-        <el-tree
-            ref="treeRef"
-            style="max-width: 600px"
-            :data="menus"
-            show-checkbox
-            node-key="id"
-            :default-checked-keys="roleInfo.menus"
-            :props="defaultProps"
-            :default-expand-all = true
-        />
+      <el-form-item label="性别">
+        <el-select v-model="userInfo.sex" placeholder="please select your zone">
+          <el-option label="男" value="1" />
+          <el-option label="女" value="0" />
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">确定</el-button>
@@ -33,6 +27,7 @@ import {watch, ref, toRefs} from 'vue'
 import {useStore} from "@/store";
 import {storeToRefs} from "pinia";
 import {roleEdit, getByRoleId} from "@/script/api/role";
+import {getByUserId, userEdit} from "@/script/api/user";
 
 const {menus} = storeToRefs(useStore());
 const treeRef = ref()
@@ -42,18 +37,19 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  roleId: {
+  userId: {
     type: Number,
     default: 0
   }
 });
-const {visible, roleId} = toRefs(props); //数据解构
+const {visible, userId} = toRefs(props); //数据解构
 
-const roleInfo = ref<RoleEditReq>({
-  id: 0,
+const userInfo = ref<UserVo>({
+  id:0,
+  userId: '',
   name: '',
-  code: '',
-  menus: []
+  email:'',
+  sex:0,
 })
 //通知父组件修改值
 const emit = defineEmits(["closeDrawer"]);
@@ -63,10 +59,10 @@ function closeDrawer() {
 }
 
 watch(
-    roleId,
+    userId,
     async () => {
-      getByRoleId(roleId.value).then(res => {
-        roleInfo.value = res.data;
+      getByUserId(userId.value).then(res => {
+        userInfo.value = res.data;
       })
     },
     {immediate: true}
@@ -74,8 +70,7 @@ watch(
 
 
 const onSubmit = () => {
-  roleInfo.value.menus = treeRef.value.getCheckedKeys(true);
-  roleEdit(roleInfo.value);
+  userEdit(userInfo.value);
   closeDrawer();
 }
 const defaultProps = {

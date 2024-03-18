@@ -18,3 +18,20 @@ export const getByRoleId = (id: number) => {
         method: "get"
     })
 }
+
+export const roleEdit = (data: RoleEditReq) => {
+    // 返回的数据格式可以和服务端约定
+    return service({
+        url: '/role/edit',
+        method: "post",
+        data
+    })
+}
+
+export const deleteByRoleId = (id: number) => {
+    // 返回的数据格式可以和服务端约定
+    return service({
+        url: '/role/delete/'+id,
+        method: "post",
+    })
+}

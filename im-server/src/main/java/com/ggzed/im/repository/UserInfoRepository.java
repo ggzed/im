@@ -25,13 +25,6 @@ public class UserInfoRepository extends ServiceImpl<UserInfoMapper, UserInfo> {
     public IPage<UserInfo> pageSearch(UserQuery query, Page<UserInfo> page) {
         return buildQueryWrapper(query).page(page);
     }
-
-    private LambdaQueryChainWrapper<UserInfo> buildQueryWrapper(UserQuery query) {
-        return lambdaQuery()
-                .eq(StrUtil.isNotBlank(query.getName()), UserInfo::getName, query.getName());
-    }
-
-
     public UserInfo getByUserId(String id) {
         return lambdaQuery()
                 .eq(StrUtil.isNotBlank(id), UserInfo::getUserId, id)
@@ -51,5 +44,11 @@ public class UserInfoRepository extends ServiceImpl<UserInfoMapper, UserInfo> {
                 .set(UserInfo::getIsDeleted, Constants.IS_DELETED)
                 .eq(UserInfo::getUserId, userId)
                 .update();
+    }
+
+    private LambdaQueryChainWrapper<UserInfo> buildQueryWrapper(UserQuery query) {
+        return lambdaQuery()
+                .eq(StrUtil.isNotBlank(query.getName()), UserInfo::getName, query.getName())
+                .eq(UserInfo::getIsDeleted, Constants.NOT_DELETED);
     }
 }

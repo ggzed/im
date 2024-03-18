@@ -14,5 +14,5 @@ public interface RoleInfoService {
 
     void edit(RoleEditReq req);
 
-    void delete(String id);
+    void delete(Long id);
 }

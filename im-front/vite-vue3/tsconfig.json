@@ -30,7 +30,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/api/xhr/config.js"
+    "src/api/xhr/config.js",
+    "node_modules/unplugin-auto-import/auto-imports.d.ts"
   ],
   "references": [
     {

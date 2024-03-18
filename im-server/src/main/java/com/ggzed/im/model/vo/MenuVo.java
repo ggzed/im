@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Data
 public class MenuVo {
+    private Long id;
     private Integer nodeType;
     private String code;
     private String path;

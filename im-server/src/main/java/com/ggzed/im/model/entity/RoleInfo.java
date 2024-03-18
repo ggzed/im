@@ -2,6 +2,7 @@ package com.ggzed.im.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.ggzed.im.model.common.BaseModel;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -20,7 +21,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("role_info")
+@TableName(value = "role_info",autoResultMap = true)
 public class RoleInfo extends BaseModel {
     /**
      * 角色id
@@ -32,7 +33,7 @@ public class RoleInfo extends BaseModel {
      */
     private String code;
 
-    @TableField(typeHandler = StringTypeHandler.class)
+    @TableField(typeHandler = JacksonTypeHandler.class)
     private List<Long> menus;
 
     /**
