@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import {reactive} from 'vue'
 import {login} from "@/script/api/auth";
-import router from "@/router/ index.ts";
+import router from "@/router/index.ts";
 import {useStore} from "@/store";
 
 // do not use same name with ref
