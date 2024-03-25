@@ -1,5 +1,11 @@
 <template>
-  <van-button type="primary">主要按钮</van-button>
+  <div class="head">
+    <router-link to="/shelfAdd">
+      <div class="add">
+        <van-icon  name="add-o" size="2rem"/>
+      </div>
+    </router-link>
+  </div>
   <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
     <van-list
         v-model:loading="loading"
@@ -7,8 +13,8 @@
         finished-text="没有更多了"
         @load="onLoad"
     >
-<!--      <van-cell v-for="item in list" :key="item" :title="item"/>-->
-      <BookCell v-for="item in list" :key="item" :title="item" ></BookCell>
+      <!--      <van-cell v-for="item in list" :key="item" :title="item"/>-->
+      <BookCell v-for="item in list" :key="item" :title="item"></BookCell>
     </van-list>
   </van-pull-refresh>
 
@@ -18,10 +24,17 @@
 import {ref} from 'vue';
 import BookCell from "@/components/shelf/BookCell.vue";
 
-const list = ref([]);
+const list = ref([1]);
 const loading = ref(false);
 const finished = ref(false);
 const refreshing = ref(false);
+const visible = ref(false);
+const fieldValue = ref('');
+
+// 关闭弹窗
+function closeDrawer() {
+  visible.value = false;
+}
 
 const onLoad = () => {
   setTimeout(() => {
@@ -53,5 +66,16 @@ const onRefresh = () => {
 </script>
 
 <style scoped>
-
+.head {
+  height: 50px;
+  background: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.add{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
 </style>

@@ -21,7 +21,8 @@ export default () => {
             }),],
         // 服务器配置
         server: {
-            open: false,
+            host: '0.0.0.0',
+            open: true,
             port: 5171,
             proxy: {
                 "/im": {
@@ -52,11 +53,9 @@ export default () => {
             chunkSizeWarningLimit: 1500, // 分块打包，分解块，将大块分解成更小的块
             rollupOptions: {
                 output: {
-                    manualChunks(id) {
-                        if (id.includes('node_modules')) {
-                            return id.toString().split('node_modules/')[1].split('/')[0].toString();
-                        }
-                    }
+                    chunkFileNames: 'static/js/[name]-[hash].js',
+                    entryFileNames: 'static/js/[name]-[hash].js',
+                    assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
                 }
             }
         }
