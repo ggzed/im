@@ -15,9 +15,9 @@ const routes = [
         component: Shelf
     },
     {
-        path: '/Add',
+        path: '/bookAdd',
         name: 'add',
-        component: Add,
+        component: BookAdd,
     },
     {
         path: '/',

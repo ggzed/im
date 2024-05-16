@@ -1,8 +1,8 @@
 <template>
   <div class="head">
-    <router-link to="/shelfAdd">
-      <div class="add">
-        <van-icon  name="add-o" size="2rem"/>
+    <router-link to="/bookAdd">
+      <div class="add" @click="showPopup">
+        <van-icon  name="add-o" size="2rem" />
       </div>
     </router-link>
   </div>
@@ -29,8 +29,10 @@ const loading = ref(false);
 const finished = ref(false);
 const refreshing = ref(false);
 const visible = ref(false);
-const fieldValue = ref('');
-
+const show = ref(false);
+const showPopup = () => {
+  show.value = true;
+};
 // 关闭弹窗
 function closeDrawer() {
   visible.value = false;
